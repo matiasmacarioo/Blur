@@ -1,0 +1,11 @@
+#imageContainer {
+    margin-top: 20px;
+}
+
+img {
+    max-width: 100%;
+}
+
+#blurRange {
+    margin-top: 10px;
+}
