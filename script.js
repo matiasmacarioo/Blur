@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const img = new Image();
                     img.src = e.target.result;
                     img.onload = function() {
+                        applyBlur(img);
                         const imgDiv = document.createElement('div');
                         imgDiv.classList.add('image-item');
                         imgDiv.appendChild(img);
@@ -30,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Event listener for blur range change
     blurRange.addEventListener('input', function() {
-        applyBlur();
+        applyBlurToImages();
     });
 
     // Event listener for compression range change
     compressionRange.addEventListener('input', function() {
-        applyBlur();
+        applyBlurToImages();
     });
 
     // Event listener for save button click
@@ -60,10 +61,14 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    function applyBlur() {
+    function applyBlurToImages() {
         const imgs = imageContainer.querySelectorAll('.image-item img');
         imgs.forEach(img => {
-            img.style.filter = `blur(${blurRange.value}px)`;
+            applyBlur(img);
         });
+    }
+
+    function applyBlur(img) {
+        img.style.filter = `blur(${blurRange.value}px)`;
     }
 });
