@@ -1,3 +1,8 @@
+body {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Light text color */
+}
+
 #imageContainer {
     margin-top: 20px;
     display: flex;
@@ -6,7 +11,7 @@
 }
 
 .image-item {
-    flex: 0 0 30%; /* Each image takes up 33% of the container width */
+    flex: 0 0 30%; /* Each image takes up 30% of the container width */
     margin-right: 10px;
     margin-bottom: 10px;
     display: flex;
@@ -18,7 +23,52 @@
     height: auto; /* Maintain aspect ratio */
 }
 
+input[type="range"],
+button {
+    background-color: #414141; /* Darker background color for inputs and button */
+    color: #fff; /* Light text color for inputs and button */
+    border: none;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background-color: #fff; /* Light thumb color for range input */
+}
+
+input[type="range"]::-moz-range-thumb {
+    background-color: #fff; /* Light thumb color for range input */
+}
+
 #blurRange, label {
-    margin-top: 10px;
     margin-left: 10px;
+}
+
+.btn-container {
+    background-color: rgba(68, 68, 68, 0.7); /* Semi-transparent background color */
+    padding: 10px; /* Increased padding for better spacing */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    display: inline-flex; /* Allow container to adjust to content */
+    align-items: center; /* Align items vertically */
+}
+
+.btn-container input[type="range"],
+.btn-container button {
+    background-color: #329b96;
+    color: #fff; /* White text color */
+    border: none;
+    padding: 8px 16px; /* Increased padding */
+    margin: 0 8px; /* Spacing between elements */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.btn-container input[type="range"] {
+    width: 100px; /* Set width for range input */
+}
+
+.btn-container button:hover {
+    background-color: #17a4cf;
 }
