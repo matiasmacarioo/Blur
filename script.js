@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const imageInput = document.getElementById('imageInput');
     const imageContainer = document.getElementById('imageContainer');
     const blurRange = document.getElementById('blurRange');
+    const compressionRange = document.getElementById('compressionRange');
     const saveButton = document.getElementById('saveButton');
 
     // Event listener for file input change
@@ -29,11 +30,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Event listener for blur range change
     blurRange.addEventListener('input', function() {
-        const blurValue = this.value;
-        const imgs = imageContainer.querySelectorAll('.image-item img');
-        imgs.forEach(img => {
-            img.style.filter = `blur(${blurValue}px)`;
-        });
+        applyBlur();
+    });
+
+    // Event listener for compression range change
+    compressionRange.addEventListener('input', function() {
+        applyBlur();
     });
 
     // Event listener for save button click
@@ -48,13 +50,20 @@ document.addEventListener("DOMContentLoaded", function() {
             canvas.height = imgHeight;
             ctx.filter = `blur(${blurRange.value}px)`;
             ctx.drawImage(img, 0, 0, imgWidth, imgHeight);
-            const dataUrl = canvas.toDataURL('image/png');
+            const dataUrl = canvas.toDataURL('image/jpeg', compressionRange.value);
             const a = document.createElement('a');
             a.href = dataUrl;
-            a.download = `blurred_image_${index + 1}.png`;
+            a.download = `blurred_image_${index + 1}.jpg`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
         });
     });
+
+    function applyBlur() {
+        const imgs = imageContainer.querySelectorAll('.image-item img');
+        imgs.forEach(img => {
+            img.style.filter = `blur(${blurRange.value}px)`;
+        });
+    }
 });
