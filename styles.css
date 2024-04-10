@@ -1,11 +1,24 @@
 #imageContainer {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
-img {
+.image-item {
+    flex: 0 0 30%; /* Each image takes up 33% of the container width */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.image-item img {
     max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
 }
 
-#blurRange {
+#blurRange, label {
     margin-top: 10px;
+    margin-left: 10px;
 }
